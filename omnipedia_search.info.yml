@@ -1,0 +1,17 @@
+name: Omnipedia - Search
+type: module
+description: Provides search-related functionality for Omnipedia.
+package: Omnipedia
+core_version_requirement: ^8 || ^9
+
+dependencies:
+  - drupal:views
+  - omnipedia_content:omnipedia_content
+  - search_api:search_api
+  - search_api:search_api_db
+
+config_devel:
+  install:
+    - search_api.index.wiki_pages
+    - search_api.server.wiki_pages
+    - views.view.wiki_search
