@@ -2,9 +2,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.body
     - field.storage.node.field_date
     - field.storage.node.field_hide_from_search
-    - field.storage.node.body
     - search_api.server.wiki_pages
   module:
     - node
@@ -14,6 +14,14 @@ name: 'Wiki pages'
 description: ''
 read_only: false
 field_settings:
+  body:
+    label: 'Body » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'body:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
   field_date:
     label: Date
     datasource_id: 'entity:node'
@@ -37,14 +45,6 @@ field_settings:
     indexed_locked: true
     type_locked: true
     hidden: true
-  processed:
-    label: 'Body » Processed text'
-    datasource_id: 'entity:node'
-    property_path: 'body:processed'
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.body
   status:
     label: status
     datasource_id: 'entity:node'
@@ -102,7 +102,7 @@ processor_settings:
   html_filter:
     all_fields: false
     fields:
-      - processed
+      - body
     title: true
     alt: true
     tags:
@@ -117,7 +117,7 @@ processor_settings:
   ignorecase:
     all_fields: true
     fields:
-      - processed
+      - body
       - title
     weights:
       preprocess_index: -20
@@ -127,7 +127,7 @@ processor_settings:
   stemmer:
     all_fields: false
     fields:
-      - processed
+      - body
     exceptions:
       mexican: mexic
       texan: texa
@@ -137,7 +137,7 @@ processor_settings:
   tokenizer:
     all_fields: true
     fields:
-      - processed
+      - body
       - title
     ignored: ._-
     spaces: ''
@@ -149,7 +149,7 @@ processor_settings:
   transliteration:
     all_fields: true
     fields:
-      - processed
+      - body
       - title
     weights:
       preprocess_index: -20
