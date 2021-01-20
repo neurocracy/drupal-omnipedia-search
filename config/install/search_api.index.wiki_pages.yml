@@ -103,7 +103,7 @@ processor_settings:
     all_fields: false
     fields:
       - body
-    title: true
+    title: false
     alt: true
     tags:
       b: 2
