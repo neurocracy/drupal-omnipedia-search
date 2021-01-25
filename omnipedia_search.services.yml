@@ -1,0 +1,7 @@
+services:
+
+  # Wiki search service.
+  omnipedia.wiki_search:
+    class: Drupal\omnipedia_search\Service\WikiSearch
+    arguments:
+      - '@current_route_match'
