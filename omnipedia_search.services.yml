@@ -5,3 +5,11 @@ services:
     class: Drupal\omnipedia_search\Service\WikiSearch
     arguments:
       - '@current_route_match'
+
+  # Is wiki search page cache context.
+  cache_context.omnipedia_is_wiki_search_page:
+    class: Drupal\omnipedia_search\Cache\Context\IsWikiSearchPageCacheContext
+    arguments:
+      - '@omnipedia.wiki_search'
+    tags:
+      - { name: cache.context }
