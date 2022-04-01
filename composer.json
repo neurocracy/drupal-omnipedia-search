@@ -12,7 +12,5 @@
   ],
   "require": {
     "drupal/search_api": "^1.15"
-  },
-  "require-dev": {
   }
 }
