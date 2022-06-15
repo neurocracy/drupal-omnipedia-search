@@ -3,7 +3,7 @@
 namespace Drupal\omnipedia_search\Plugin\search_api\processor;
 
 use Drupal\omnipedia_core\Entity\Node;
-use Drupal\omnipedia_core\Service\TimelineInterface;
+use Drupal\omnipedia_date\Service\TimelineInterface;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\Processor\ProcessorInterface;
 use Drupal\search_api\Processor\ProcessorPluginBase;
@@ -32,7 +32,7 @@ class OmnipediaCurrentDate extends ProcessorPluginBase {
   /**
    * The Omnipedia timeline service.
    *
-   * @var \Drupal\omnipedia_core\Service\TimelineInterface
+   * @var \Drupal\omnipedia_date\Service\TimelineInterface
    */
   protected $timeline;
 
@@ -56,7 +56,7 @@ class OmnipediaCurrentDate extends ProcessorPluginBase {
   /**
    * Set the Omnipedia timeline service dependency.
    *
-   * @param \Drupal\omnipedia_core\Service\TimelineInterface $timeline
+   * @param \Drupal\omnipedia_date\Service\TimelineInterface $timeline
    *   The Omnipedia timeline service.
    *
    * @return $this
