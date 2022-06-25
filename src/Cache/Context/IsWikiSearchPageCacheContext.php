@@ -22,7 +22,7 @@ class IsWikiSearchPageCacheContext implements CalculatedCacheContextInterface {
    *
    * @var \Drupal\omnipedia_search\Service\WikiSearchInterface
    */
-  protected $wikiSearch;
+  protected WikiSearchInterface $wikiSearch;
 
   /**
    * Service constructor; saves dependencies.

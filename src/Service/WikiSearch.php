@@ -17,7 +17,7 @@ class WikiSearch implements WikiSearchInterface {
    *
    * @var \Drupal\Core\Routing\StackedRouteMatchInterface
    */
-  protected $currentRouteMatch;
+  protected StackedRouteMatchInterface $currentRouteMatch;
 
   /**
    * Constructs this service object.
