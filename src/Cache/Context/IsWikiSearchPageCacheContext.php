@@ -47,11 +47,13 @@ class IsWikiSearchPageCacheContext implements CalculatedCacheContextInterface {
    * {@inheritdoc}
    */
   public function getContext($parameter = null) {
+
     if ($this->wikiSearch->isCurrentRouteSearchPage()) {
       return 'is_wiki_search_page';
     }
 
     return 'is_not_wiki_search_page';
+
   }
 
   /**

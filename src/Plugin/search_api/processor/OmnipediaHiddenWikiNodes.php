@@ -29,6 +29,7 @@ class OmnipediaHiddenWikiNodes extends ProcessorPluginBase {
    * @todo Is there a way to indicate support only for indexes for wiki nodes?
    */
   public static function supportsIndex(IndexInterface $index) {
+
     foreach ($index->getDatasources() as $datasource) {
       if ($datasource->getEntityTypeId() === 'node') {
         return true;
@@ -36,14 +37,17 @@ class OmnipediaHiddenWikiNodes extends ProcessorPluginBase {
     }
 
     return false;
+
   }
 
   /**
    * {@inheritdoc}
    */
   public function alterIndexedItems(array &$items) {
+
     /** @var \Drupal\search_api\Item\ItemInterface $item */
     foreach ($items as $itemId => $item) {
+
       /** @var \Drupal\omnipedia_core\Entity\NodeInterface */
       $node = $item->getOriginalObject()->getValue();
 
@@ -55,7 +59,9 @@ class OmnipediaHiddenWikiNodes extends ProcessorPluginBase {
       if ($node->isHiddenFromSearch()) {
         unset($items[$itemId]);
       }
+
     }
+
   }
 
 }

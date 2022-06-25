@@ -46,6 +46,7 @@ class OmnipediaCurrentDate extends ProcessorPluginBase {
     array $configuration,
     $pluginId, $pluginDefinition
   ) {
+
     $processor = parent::create(
       $container, $configuration, $pluginId, $pluginDefinition
     );
@@ -53,6 +54,7 @@ class OmnipediaCurrentDate extends ProcessorPluginBase {
     $processor->setTimeline($container->get('omnipedia.timeline'));
 
     return $processor;
+
   }
 
   /**
@@ -64,9 +66,11 @@ class OmnipediaCurrentDate extends ProcessorPluginBase {
    * @return $this
    */
   public function setTimeline(TimelineInterface $timeline): ProcessorInterface {
+
     $this->timeline = $timeline;
 
     return $this;
+
   }
 
   /**
@@ -77,6 +81,7 @@ class OmnipediaCurrentDate extends ProcessorPluginBase {
    * @todo Is there a way to indicate support only for indexes for wiki nodes?
    */
   public static function supportsIndex(IndexInterface $index) {
+
     foreach ($index->getDatasources() as $datasource) {
       if ($datasource->getEntityTypeId() === 'node') {
         return true;
@@ -84,6 +89,7 @@ class OmnipediaCurrentDate extends ProcessorPluginBase {
     }
 
     return false;
+
   }
 
   /**
@@ -93,7 +99,9 @@ class OmnipediaCurrentDate extends ProcessorPluginBase {
    * trying to treat it as a date can cause errors.
    */
   public function preIndexSave() {
+
     foreach ($this->index->getDatasources() as $datasourceId => $datasource) {
+
       /** @var string */
       $entityType = $datasource->getEntityTypeId();
 
@@ -104,13 +112,16 @@ class OmnipediaCurrentDate extends ProcessorPluginBase {
       $this->ensureField(
         $datasourceId, Node::getWikiNodeDateFieldName(), 'string'
       );
+
     }
+
   }
 
   /**
    * {@inheritdoc}
    */
   public function preprocessSearchQuery(QueryInterface $query) {
+
     // Adds the query condition that wiki nodes must have the current date.
     $query->getConditionGroup()->addCondition(
       Node::getWikiNodeDateFieldName(),
@@ -123,6 +134,7 @@ class OmnipediaCurrentDate extends ProcessorPluginBase {
     // Views recalculates the cache metadata and not on a cache clear/rebuild,
     // counterintuitively enough.
     $query->addCacheContexts(['omnipedia_dates']);
+
   }
 
 }
