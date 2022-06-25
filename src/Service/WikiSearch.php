@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\omnipedia_search\Service;
 
 use Drupal\Core\Routing\StackedRouteMatchInterface;

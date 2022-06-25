@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\omnipedia_search\Cache\Context;
 
 use Drupal\Core\Cache\Context\CalculatedCacheContextInterface;

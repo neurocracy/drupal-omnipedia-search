@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\omnipedia_search\Plugin\search_api\processor;
 
 use Drupal\omnipedia_core\Entity\Node;
