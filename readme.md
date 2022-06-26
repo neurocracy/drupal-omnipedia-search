@@ -49,3 +49,13 @@ Then, in your root ```composer.json```, add the following to the
 Then, in your project's root, run ```composer require
 "drupal/omnipedia_search:3.x-dev@dev"``` to have Composer install the module
 and its required dependencies for you.
+
+----
+
+# Description
+
+This contains a cache context, [Search
+API](https://www.drupal.org/project/search_api) processor plug-ins, a service to
+determine if the current route is a wiki search route, and some  configuration
+that defines our Search API index and server, along with the View that displays
+search results.
