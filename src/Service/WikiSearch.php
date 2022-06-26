@@ -20,7 +20,7 @@ class WikiSearch implements WikiSearchInterface {
   protected StackedRouteMatchInterface $currentRouteMatch;
 
   /**
-   * Constructs this service object.
+   * Constructs this service object; saves dependencies.
    *
    * @param \Drupal\Core\Routing\StackedRouteMatchInterface $currentRouteMatch
    *   The Drupal current route match service.
@@ -28,7 +28,6 @@ class WikiSearch implements WikiSearchInterface {
   public function __construct(
     StackedRouteMatchInterface $currentRouteMatch
   ) {
-    // Save dependencies.
     $this->currentRouteMatch = $currentRouteMatch;
   }
 
