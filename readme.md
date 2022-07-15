@@ -59,3 +59,9 @@ API](https://www.drupal.org/project/search_api) processor plug-ins, a service to
 determine if the current route is a wiki search route, and some  configuration
 that defines our Search API index and server, along with the View that displays
 search results.
+
+----
+
+# Planned improvements
+
+* [Enable caching for search results view](https://github.com/neurocracy/drupal-omnipedia-search/issues/1)
