@@ -55,8 +55,8 @@ should get you up and running.
 Then, in your root ```composer.json```, add the following to the
 ```"repositories"``` section:
 
-```
-{
+```json
+"drupal/omnipedia_search": {
   "type": "vcs",
   "url": "https://github.com/neurocracy/drupal-omnipedia-search.git"
 }
