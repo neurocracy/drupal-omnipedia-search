@@ -36,7 +36,7 @@ search results.
 
 * [Drupal 9](https://www.drupal.org/download) ([Drupal 8 is end-of-life](https://www.drupal.org/psa-2021-11-30))
 
-* PHP 7.4
+* PHP 7.4 or PHP 8
 
 * [Composer](https://getcomposer.org/)
 
