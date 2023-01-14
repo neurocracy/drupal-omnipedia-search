@@ -40,6 +40,12 @@ search results.
 
 * [Composer](https://getcomposer.org/)
 
+## Drupal dependencies
+
+Follow the Composer installation instructions for these dependencies first:
+
+* The [`omnipedia_content`](https://github.com/neurocracy/drupal-omnipedia-content) and [`omnipedia_date`](https://github.com/neurocracy/drupal-omnipedia-date) modules.
+
 ----
 
 # Installation
