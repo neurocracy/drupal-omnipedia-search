@@ -34,7 +34,7 @@ search results.
 
 # Requirements
 
-* [Drupal 9](https://www.drupal.org/download) ([Drupal 8 is end-of-life](https://www.drupal.org/psa-2021-11-30))
+* [Drupal 9.5 or 10](https://www.drupal.org/download) ([Drupal 8 is end-of-life](https://www.drupal.org/psa-2021-11-30))
 
 * PHP 7.4 or PHP 8
 
@@ -69,5 +69,13 @@ Then, in your root `composer.json`, add the following to the
 ```
 
 Then, in your project's root, run `composer require
-"drupal/omnipedia_search:3.x-dev@dev"` to have Composer install the module and
+"drupal/omnipedia_search:4.x-dev@dev"` to have Composer install the module and
 its required dependencies for you.
+
+----
+
+# Major breaking changes
+
+The following major version bumps indicate breaking changes:
+
+* 4.x - Requires Drupal 9.5 or [Drupal 10](https://www.drupal.org/project/drupal/releases/10.0.0).
