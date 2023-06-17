@@ -3,6 +3,10 @@
   "description": "Omnipedia - Search",
   "type": "drupal-custom-module",
   "license": "GPL-2.0-or-later",
+  "support": {
+    "docs": "https://github.com/neurocracy/drupal-omnipedia-search",
+    "source": "https://github.com/neurocracy/drupal-omnipedia-search"
+  },
   "authors": [
     {
       "name": "Ambient.Impact",
