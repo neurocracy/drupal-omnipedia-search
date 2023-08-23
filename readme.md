@@ -16,12 +16,6 @@ search results.
 
 ----
 
-# Planned improvements
-
-* [Enable caching for search results view](https://github.com/neurocracy/drupal-omnipedia-search/issues/1)
-
-----
-
 # Requirements
 
 * [Drupal 9.5 or 10](https://www.drupal.org/download) ([Drupal 8 is end-of-life](https://www.drupal.org/psa-2021-11-30))
