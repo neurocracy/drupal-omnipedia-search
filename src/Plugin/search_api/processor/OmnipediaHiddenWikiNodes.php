@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Drupal\omnipedia_search\Plugin\search_api\processor;
 
+use Drupal\omnipedia_core\Entity\WikiNodeInfo;
+use Drupal\omnipedia_core\Service\WikiNodeMainPageInterface;
+use Drupal\omnipedia_core\Service\WikiNodeResolverInterface;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\Processor\ProcessorPluginBase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Exclude wiki nodes from search results that are marked as hidden.
@@ -20,6 +24,45 @@ use Drupal\search_api\Processor\ProcessorPluginBase;
  * )
  */
 class OmnipediaHiddenWikiNodes extends ProcessorPluginBase {
+
+  /**
+   * The Omnipedia wiki node main page service.
+   *
+   * @var \Drupal\omnipedia_core\Service\WikiNodeMainPageInterface
+   */
+  protected readonly WikiNodeMainPageInterface $wikiNodeMainPage;
+
+  /**
+   * The Omnipedia wiki node resolver service.
+   *
+   * @var \Drupal\omnipedia_core\Service\WikiNodeResolverInterface
+   */
+  protected readonly WikiNodeResolverInterface $wikiNodeResolver;
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(
+    ContainerInterface $container, array $configuration, $pluginId,
+    $pluginDefinition,
+  ) {
+
+    /** @var static $processor */
+    $processor = parent::create(
+      $container, $configuration, $pluginId, $pluginDefinition,
+    );
+
+    $processor->wikiNodeMainPage = $container->get(
+      'omnipedia.wiki_node_main_page',
+    );
+
+    $processor->wikiNodeResolver = $container->get(
+      'omnipedia.wiki_node_resolver',
+    );
+
+    return $processor;
+
+  }
 
   /**
    * {@inheritdoc}
@@ -52,12 +95,26 @@ class OmnipediaHiddenWikiNodes extends ProcessorPluginBase {
       $node = $item->getOriginalObject()->getValue();
 
       // Don't do anything with non-wiki nodes.
-      if (!$node->isWikiNode()) {
+      if ($this->wikiNodeResolver->isWikiNode($node) !== true) {
         continue;
       }
 
-      if ($node->isHiddenFromSearch()) {
+      // Main pages are always hidden from search.
+      if ($this->wikiNodeMainPage->isMainPage($node) === true) {
+
         unset($items[$itemId]);
+
+        continue;
+
+      }
+
+      // If the wiki node field is explicitly set to true, hide this node.
+      if ($node->get(
+        WikiNodeInfo::HIDDEN_FROM_SEARCH_FIELD,
+      )->getString() === '1') {
+
+        unset($items[$itemId]);
+
       }
 
     }
