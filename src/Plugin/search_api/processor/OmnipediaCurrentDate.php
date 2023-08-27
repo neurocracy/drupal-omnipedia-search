@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\omnipedia_search\Plugin\search_api\processor;
 
-use Drupal\omnipedia_core\Entity\Node;
+use Drupal\omnipedia_core\Entity\WikiNodeInfo;
 use Drupal\omnipedia_date\Service\TimelineInterface;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\Processor\ProcessorInterface;
@@ -110,7 +110,7 @@ class OmnipediaCurrentDate extends ProcessorPluginBase {
       }
 
       $this->ensureField(
-        $datasourceId, Node::getWikiNodeDateFieldName(), 'string'
+        $datasourceId, WikiNodeInfo::DATE_FIELD, 'string',
       );
 
     }
@@ -124,8 +124,8 @@ class OmnipediaCurrentDate extends ProcessorPluginBase {
 
     // Adds the query condition that wiki nodes must have the current date.
     $query->getConditionGroup()->addCondition(
-      Node::getWikiNodeDateFieldName(),
-      $this->timeline->getDateFormatted('current', 'storage')
+      WikiNodeInfo::DATE_FIELD,
+      $this->timeline->getDateFormatted('current', 'storage'),
     );
 
     // Add the 'omnipedia_dates' cache context so that cached search results
