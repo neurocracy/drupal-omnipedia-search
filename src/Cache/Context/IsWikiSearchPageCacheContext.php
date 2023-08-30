@@ -18,23 +18,14 @@ use Drupal\omnipedia_search\Service\WikiSearchInterface;
 class IsWikiSearchPageCacheContext implements CalculatedCacheContextInterface {
 
   /**
-   * The Omnipedia wiki search service.
-   *
-   * @var \Drupal\omnipedia_search\Service\WikiSearchInterface
-   */
-  protected WikiSearchInterface $wikiSearch;
-
-  /**
    * Cache context constructor; saves dependencies.
    *
    * @param \Drupal\omnipedia_search\Service\WikiSearchInterface $wikiSearch
    *   The Omnipedia wiki search service.
    */
   public function __construct(
-    WikiSearchInterface $wikiSearch
-  ) {
-    $this->wikiSearch = $wikiSearch;
-  }
+    protected readonly WikiSearchInterface $wikiSearch,
+  ) {}
 
   /**
    * {@inheritdoc}
