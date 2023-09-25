@@ -30,7 +30,7 @@ search results.
 Before attempting to install this, you must add the Composer repositories as
 described in the installation instructions for these dependencies:
 
-* The [`omnipedia_content`](https://github.com/neurocracy/drupal-omnipedia-content), [`omnipedia_core`](https://github.com/neurocracy/drupal-omnipedia-core), and [`omnipedia_date`](https://github.com/neurocracy/drupal-omnipedia-date) modules.
+* The [`omnipedia_content`](https://github.com/neurocracy/drupal-omnipedia-content), [`omnipedia_core`](https://github.com/neurocracy/drupal-omnipedia-core), [`omnipedia_date`](https://github.com/neurocracy/drupal-omnipedia-date), and [`omnipedia_main_page`](https://github.com/neurocracy/drupal-omnipedia-main-page) modules.
 
 ----
 

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Drupal\omnipedia_search\Plugin\search_api\processor;
 
 use Drupal\omnipedia_core\Entity\WikiNodeInfo;
-use Drupal\omnipedia_core\Service\WikiNodeMainPageInterface;
 use Drupal\omnipedia_core\Service\WikiNodeResolverInterface;
+use Drupal\omnipedia_main_page\Service\MainPageResolverInterface;
 use Drupal\search_api\IndexInterface;
 use Drupal\search_api\Processor\ProcessorPluginBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -26,11 +26,11 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class OmnipediaHiddenWikiNodes extends ProcessorPluginBase {
 
   /**
-   * The Omnipedia wiki node main page service.
+   * The Omnipedia main page resolver service.
    *
-   * @var \Drupal\omnipedia_core\Service\WikiNodeMainPageInterface
+   * @var \Drupal\omnipedia_main_page\Service\MainPageResolverInterface
    */
-  protected readonly WikiNodeMainPageInterface $wikiNodeMainPage;
+  protected readonly MainPageResolverInterface $mainPageResolver;
 
   /**
    * The Omnipedia wiki node resolver service.
@@ -52,8 +52,8 @@ class OmnipediaHiddenWikiNodes extends ProcessorPluginBase {
       $container, $configuration, $pluginId, $pluginDefinition,
     );
 
-    $processor->wikiNodeMainPage = $container->get(
-      'omnipedia.wiki_node_main_page',
+    $processor->mainPageResolver = $container->get(
+      'omnipedia_main_page.resolver',
     );
 
     $processor->wikiNodeResolver = $container->get(
@@ -100,7 +100,7 @@ class OmnipediaHiddenWikiNodes extends ProcessorPluginBase {
       }
 
       // Main pages are always hidden from search.
-      if ($this->wikiNodeMainPage->isMainPage($node) === true) {
+      if ($this->mainPageResolver->is($node) === true) {
 
         unset($items[$itemId]);
 
