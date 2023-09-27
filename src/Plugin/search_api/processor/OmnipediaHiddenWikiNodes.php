@@ -91,7 +91,7 @@ class OmnipediaHiddenWikiNodes extends ProcessorPluginBase {
     /** @var \Drupal\search_api\Item\ItemInterface $item */
     foreach ($items as $itemId => $item) {
 
-      /** @var \Drupal\omnipedia_core\Entity\NodeInterface */
+      /** @var \Drupal\node\NodeInterface */
       $node = $item->getOriginalObject()->getValue();
 
       // Don't do anything with non-wiki nodes.
