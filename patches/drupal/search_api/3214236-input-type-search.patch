@@ -1,0 +1,14 @@
+diff --git a/src/Plugin/views/filter/SearchApiFulltext.php b/src/Plugin/views/filter/SearchApiFulltext.php
+index 045e959ff2b515ea3edbb3f92b26abd1bf0fb8bc..4bd5ecea303554e94410e5d3764f416c8f2109c9 100644
+--- a/src/Plugin/views/filter/SearchApiFulltext.php
++++ b/src/Plugin/views/filter/SearchApiFulltext.php
+@@ -297,7 +297,8 @@ class SearchApiFulltext extends FilterPluginBase {
+       $max_length = $this->options['expose']['value_maxlength'];
+     }
+     $form['value'] = [
+-      '#type' => 'textfield',
++      // @see https://www.drupal.org/project/search_api/issues/3214236
++      '#type' => 'search',
+       '#title' => !$exposed ? $this->t('Value') : '',
+       '#size' => 30,
+       '#default_value' => $this->value,
