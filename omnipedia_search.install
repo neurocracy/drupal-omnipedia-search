@@ -1,0 +1,16 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Invalidate wiki search view cache tags to use <input type="search">.
+ */
+function omnipedia_search_update_9401(): void {
+
+  // @see https://github.com/neurocracy/drupal-omnipedia-search/issues/2
+  // @see https://www.drupal.org/project/search_api/issues/3214236
+  \Drupal::service('cache_tags.invalidator')->invalidateTags([
+    'config:views.view.wiki_search',
+  ]);
+
+}
