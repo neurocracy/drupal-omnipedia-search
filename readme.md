@@ -24,7 +24,6 @@ search results.
 
 * [Composer](https://getcomposer.org/)
 
-
 ## Drupal dependencies
 
 Before attempting to install this, you must add the Composer repositories as
@@ -68,7 +67,6 @@ Notably, you'll need to [enable patching from
 dependencies](https://github.com/cweagans/composer-patches/tree/1.x#allowing-patches-to-be-applied-from-dependencies) (such as this module 🤓). At
 a minimum, you should have these values in your root `composer.json` (merge with
 existing keys as needed):
-
 
 ```json
 {
