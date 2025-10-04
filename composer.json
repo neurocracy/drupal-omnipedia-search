@@ -27,7 +27,7 @@
   "extra": {
     "patches": {
       "drupal/search_api": {
-        "How to change input type from \"text\" to \"search\" [#3214236]": "https://raw.githubusercontent.com/neurocracy/drupal-omnipedia-search/4.x/patches/drupal/search_api/3214236-input-type-search.patch"
+        "How to change input type from \"text\" to \"search\" [#3214236]": "https://gitlab.com/neurocracy/omnipedia/modules/omnipedia-search/-/raw/b2ecb6d25952d96079c2aea96b60bbe5595ab8a6/patches/drupal/search_api/3214236-input-type-search.patch"
       }
     }
   }
