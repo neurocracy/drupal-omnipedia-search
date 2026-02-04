@@ -1,15 +1,17 @@
 services:
 
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
   # Wiki search service.
   omnipedia.wiki_search:
     class: Drupal\omnipedia_search\Service\WikiSearch
-    arguments:
-      - '@current_route_match'
+
+  Drupal\omnipedia_search\Service\WikiSearchInterface: '@omnipedia.wiki_search'
 
   # Is wiki search page cache context.
   cache_context.omnipedia_is_wiki_search_page:
     class: Drupal\omnipedia_search\Cache\Context\IsWikiSearchPageCacheContext
-    arguments:
-      - '@omnipedia.wiki_search'
     tags:
       - { name: cache.context }
