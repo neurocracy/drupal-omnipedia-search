@@ -1,0 +1,48 @@
+<?php
+
+declare(strict_types=1);
+
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Hook\Attribute\LegacyHook;
+use Drupal\omnipedia_search\Hook\OmnipediaHeaderHooks;
+
+/**
+ * Alter the 'omnipedia_header' block build array.
+ */
+// @phpstan-ignore-next-line
+#[LegacyHook]
+function omnipedia_search_block_build_omnipedia_header_alter(
+  array &$build,
+  BlockPluginInterface $block,
+): void {
+
+  \Drupal::classResolver(OmnipediaHeaderHooks::class)->blockBuildAlter(
+    $build, $block,
+  );
+
+}
+
+/**
+ * Prepares variables for the omnipedia-header.html.twig template.
+ */
+// @phpstan-ignore-next-line
+#[LegacyHook]
+function omnipedia_search_preprocess_omnipedia_header(array &$variables): void {
+
+  \Drupal::classResolver(OmnipediaHeaderHooks::class)->preprocessHeader(
+    $variables,
+  );
+}
+
+/**
+ * Alter the theme registry.
+ */
+// @phpstan-ignore-next-line
+#[LegacyHook]
+function omnipedia_search_theme_registry_alter(array &$themeRegistry): void {
+
+  \Drupal::classResolver(OmnipediaHeaderHooks::class)->themeRegistrAlter(
+    $themeRegistry,
+  );
+
+}

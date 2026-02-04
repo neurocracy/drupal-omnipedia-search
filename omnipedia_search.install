@@ -14,3 +14,18 @@ function omnipedia_search_update_9401(): void {
   ]);
 
 }
+
+/**
+ * Rebuild container, hooks, theme registry for porting Omnipedia header search.
+ */
+function omnipedia_search_update_9402(): void {
+
+  \Drupal::service('kernel')->invalidateContainer();
+
+  // This service is technically @internal but there isn't a clear API for
+  // rebuilding the theme registry.
+  \Drupal::service('theme.registry')->reset();
+
+  \Drupal::service('module_handler')->resetImplementations();
+
+}
